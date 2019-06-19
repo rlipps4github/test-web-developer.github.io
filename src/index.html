@@ -6,33 +6,26 @@
   <title>Lease Labs Challenge</title>
   <meta name="description" content="Web Developer Code Challenge">
   <meta name="author" content="Ron Lipps">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
   <main id="main">
     <header id="header">
-      <div id="branding"><img src="img/leaselabs_logo_fullstack_rgb.png" /></div>
-      <div id="navButton"><span></span><span></span><span></span></div>
-      <nav id="nav">
-        <ul>
-          <li>
-            <a href="javascript:;">HOME</a>
-          </li>
-          <li>
-            <a href="javascript:;">OUR WORK</a>
-          </li>
-          <li>
-            <a href="javascript:;">ABOUT US</a>
-          </li>
-          <li>
-            <a href="javascript:;">CONTACT US</a>
-          </li>
-          <li>
-            <a href="javascript:;">SPECIALS</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="container">
+        <div id="branding"><img src="public/img/leaselabs_logo_fullstack_rgb.png" /></div>
+        <div id="navButton"><span></span><span></span><span></span></div>
+        <nav id="nav">
+          <ul>
+            <li><a href="javascript:;">HOME</a></li>
+            <li><a href="javascript:;">OUR WORK</a></li>
+            <li><a href="javascript:;">ABOUT US</a></li>
+            <li><a href="javascript:;">CONTACT US</a></li>
+            <li class="active"><a href="javascript:;">SPECIALS</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <section class="pull-right">
+    <section class="content pull-right">
       <article>
         <h1>HEADING 1</h1>
         <h2>heading 2</h2>
@@ -42,23 +35,23 @@
         <div id="gallery"></div>
       </article>
     </section>
-    <aside class="sidebar">
-      <div class="subnav">
-        <h3>SUBNAV</h3>
+    <aside class="sidebar pull-left">
+      <section>
+        <div class="listTitle">SUBNAV</div>
         <ul>
-          <li>Link 1</li>
-          <li>Link 2</li>
-          <li>Link 3</li>
+          <li><a href="javascript:;">Link 1</a></li>
+          <li><a href="javascript:;">Link 2</a></li>
+          <li><a href="javascript:;">Link 3</a></li>
         </ul>
-      </div>
-      <div class="related">
-          <h3>RELATED LINKS</h3>
+      </section>
+      <section>
+          <div class="listTitle">RELATED LINKS</div>
           <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
+            <li><a href="javascript:;">Link 1</a></li>
+            <li><a href="javascript:;">Link 2</a></li>
+            <li><a href="javascript:;">Link 3</a></li>
           </ul>
-      </div>
+      </section>
     </aside>
   </main>
 </body>

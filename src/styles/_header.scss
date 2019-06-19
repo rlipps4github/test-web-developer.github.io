@@ -1,0 +1,201 @@
+#header {
+    width: 100%;
+    height: 70px;
+    padding: 0;
+    border-bottom: 1px solid #BEC2C5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $default-back;
+    transition: height 0.33s;
+    z-index: 200;
+
+    .container {
+        width: 100%;
+        max-width: $grid_max;
+        height: 100%;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+  
+    #branding {
+  
+        img { 
+            height: 40px; 
+            transition: height 0.15s;
+        }
+    }
+  
+    #navButton {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      transform: scale(1);
+      transition: transform 0.33s;
+      cursor: pointer;
+  
+      span {
+        width: 100%; 
+        height: 0;
+        border: 1.5px solid $primary-highlight;
+        transform: rotate(0);
+        transition: transform 0.5s, border-color 1s;
+      }
+  
+      &:hover {
+  
+        span { border-color: $default-fore; }
+      }
+  
+      &.expand {
+        span:nth-child(1) {
+          transform: rotate(-45deg) translate(-9px,9px);
+        } 
+  
+      span:nth-child(2) {
+          transform: rotate(-210deg);
+          opacity: 0;
+        }
+  
+      span:nth-child(3) {
+          transform: rotate(45deg) translate(-9px,-9px);
+        }
+      }
+    }
+  
+    #nav { 
+        width: 100%;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        background-color: $default-back;
+        opacity: 0;
+        transition: none;
+  
+        ul { 
+            list-style: none;
+            pointer-events: none;
+        }
+  
+        li { 
+            height: 0; 
+            transition: height 0.33s;
+
+            &.active { 
+                background-color: $primary-highlight;
+                color: $primary-highlight-fore;
+            }
+        }
+  
+        a {
+            width: 100%;
+            height: 100%;
+            padding: 0 20px; 
+            display: inline-block;
+            opacity: 0;
+            overflow: hidden;
+            pointer-events: none;
+            transition: opacity 0.33s, color 0.33s;
+        }
+  
+        /* activate mobile nav */
+        &.expand {
+            height: calc(100vh - 70px);
+            opacity: 1;
+    
+            ul { padding: 15px 0; }
+    
+            li { 
+                height: 50px;
+                transition: height 0.33s;
+            }
+    
+            a { 
+                line-height: 50px;
+                opacity: 1;
+                pointer-events: auto;
+                transition: height 0.33s 0.33s;
+            }
+        }
+    }
+}
+
+/* LAPTOP */
+@media only screen and (min-width: $grid_lap ) {
+
+    #header {
+        height: 100px;
+
+        .container { padding: 0 25px; }
+
+        #branding {
+    
+            img { height: 60px; }
+        }
+
+        #nav {
+            width: auto;
+            height: 100%;
+            position: relative;
+            top: 0;
+            left: auto;
+            opacity: 1;
+            transition: opacity 1s;
+
+            ul {
+                width: auto;
+                height: 100%;
+            }
+
+            li { 
+                height: 100%;
+                float: left;
+
+                &.active { 
+                    transform: skewX(-20deg);
+    
+                    a { transform: skewX(20deg); }
+
+                    a:hover { color: $secondary-highlight-fore; }
+                    
+                }
+            }
+
+            a {
+                padding: 0 2.75vw;
+                display: flex;
+                align-items: center;
+                opacity: 1;
+                pointer-events: auto;
+    
+                &:hover { color: $primary-highlight; }
+            }
+
+        }
+
+        #navButton {
+            transition: none;
+            transform: scale(0);
+        }
+    }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: $grid_desk ) {
+
+    #header {
+
+        #nav {
+
+            a { padding: 0 40px; }
+        }
+    }
+
+}

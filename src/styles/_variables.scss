@@ -1,30 +1,18 @@
-/* VARIABLES */
+/* COLORS */
+$primary-highlight: #00A7E0;
+$primary-highlight-fore: #FFFFFF;
 
-    /*colors*/
-    $primary-highlight: #00A7E0;
-    $primary-highlight-fore: #FFFFFF;
-    
-    $secondary-highlight: #E4E2E2;
-    $secondary-highlight-fore: #343E48;
-    
-    $default-fore: #343E48;
-    $default-back: #FFFFFF;
-    
-        /*fonts*/
-    $primary-font: 'Dosis', Verdana, sans-serif;
-    $secondary-font: 'Righteous', Impact, cursive;
-    
-        /*dimensions*/
-    $rowV: 3vw;
-    $rowH: 5vw;
-    $rowPad: $rowV $rowH;
-    
-    $colPad: calc(20px + 2vmin);
-    
-        /* GRID */
-    
-    $grid_tab: 600;
-    $grid_lap: 1200;
-    $grid_max: 1366px;
-    $grid_cols: 12;
+$secondary-highlight: #E4E2E2;
+$secondary-highlight-fore: #343E48;
+
+$default-fore: #343E48;
+$default-back: #FFFFFF;
+
+/* DIMS */
+$grid_max: 1366px;
+
+/* MQ */
+$grid_tab: 600px;
+$grid_lap: 992px;
+$grid_desk: 1200px;
     
