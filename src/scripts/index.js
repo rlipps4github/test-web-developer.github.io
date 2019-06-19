@@ -1,8 +1,6 @@
 import '../styles/index.scss';
 import { images } from './app.js';
 
-console.log('webpack starterkit');
-
 const theNav = document.querySelector('#nav');
 const theNavBtn = document.querySelector('#navButton');
 const theGallery = document.querySelector('#gallery');
@@ -38,7 +36,7 @@ let imgHTML = '';
 for (var img in images) {
     imgHTML += `
     <figure id="${img}" data-head="${images[img].heading}" data-desc="${images[img].description}">
-        <div class="imageWrap"><img src="public/${images[img].path}" /></div>
+        <div class="imageWrap"><img alt="${images[img].description}" src="public/${images[img].path}" /></div>
         <figcaption>${images[img].heading} - ${images[img].description}</figcaption>
     </figure>
     `;
