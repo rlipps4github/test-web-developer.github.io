@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import { images } from './app.js';
+import { carousel } from './carousel.js';
 
 const theNav = document.querySelector('#nav');
 const theNavBtn = document.querySelector('#navButton');
@@ -26,22 +27,28 @@ theNav.addEventListener('click', (e) => {
 window.addEventListener('resize', () => {
     theNav.classList.remove('expand');
     theNavBtn.classList.remove('expand'); 
-    theGallery.classList.remove('mobile');  
-    if (window.innerWidth < 600) theGallery.classList.add('mobile'); 
 });
 
 // BUILD THE GALLERY IMAGES
 
 let imgHTML = '';
-for (var img in images) {
+let imgIdx = 0;
+for (let img in images) {
+    let show = imgIdx === 0 ? 'showing' : '';
+    let hide = imgIdx === 0 ? '' : 'hiding';
     imgHTML += `
-    <figure id="${img}" data-head="${images[img].heading}" data-desc="${images[img].description}">
+    <figure id="${img}" class="${show}${hide}" data-head="${images[img].heading}" data-desc="${images[img].description}" data-idx="${imgIdx}">
         <div class="imageWrap"><img alt="${images[img].description}" src="public/${images[img].path}" /></div>
-        <figcaption>${images[img].heading} - ${images[img].description}</figcaption>
     </figure>
     `;
+    imgIdx++;
 }
 theGallery.innerHTML = imgHTML;
+
+// GALLERY CAROUSEL
+  
+  window.onload = () => carousel();
+
 
 
 

@@ -275,20 +275,50 @@ section.content {
     border: solid #E4E2E2;
     border-width: 0 0 1px;
     position: relative; }
+  section.content .galleryWrap {
+    overflow: hidden;
+    position: relative;
+    display: flex; }
+    section.content .galleryWrap::before {
+      content: '';
+      padding-top: 67%; }
+    section.content .galleryWrap .arrow {
+      width: 0px;
+      height: 0px;
+      border: 15px solid transparent;
+      position: absolute;
+      top: calc(50% - 7.5px);
+      z-index: 10; }
+      section.content .galleryWrap .arrow.arrow-left {
+        border-color: transparent #00A7E0 transparent transparent;
+        left: 0; }
+      section.content .galleryWrap .arrow.arrow-right {
+        border-color: transparent transparent transparent #00A7E0;
+        right: 0; }
+      section.content .galleryWrap .arrow:hover {
+        opacity: 0.66; }
   section.content #gallery {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center; }
     section.content #gallery figure {
       width: 100%;
-      margin-top: 25px;
       border: 1px solid #00A7E0;
+      position: absolute;
+      flex-shrink: 0;
+      color: #FFFFFF;
       overflow: hidden;
+      opacity: 1;
+      transition: opacity 0.5s;
       cursor: pointer;
-      position: relative; }
+      z-index: 1; }
+      section.content #gallery figure.hiding {
+        position: absolute;
+        opacity: 0;
+        z-index: -1; }
       section.content #gallery figure .imageWrap {
-        background-color: transparent;
+        background-color: #077ba3;
         position: relative; }
         section.content #gallery figure .imageWrap::before {
           display: block;
@@ -302,17 +332,7 @@ section.content {
           transform: translate(-50%, -50%); }
       section.content #gallery figure img {
         width: 105%;
-        opacity: 1; }
-      section.content #gallery figure figcaption {
-        width: 100%;
-        padding: 0 10px;
-        position: absolute;
-        bottom: 0;
-        background: #E4E2E2;
-        font-size: 10px;
-        text-align: center;
-        opacity: 0.8;
-        z-index: 1; }
+        opacity: 0.6; }
       section.content #gallery figure#man img {
         transform: translate(-50%, -37%); }
       section.content #gallery figure#wizard img {
@@ -320,14 +340,48 @@ section.content {
       section.content #gallery figure#beast img {
         width: 130%;
         transform: translate(-52%, -44%); }
+      section.content #gallery figure::before {
+        content: attr(data-head);
+        width: 100%;
+        position: absolute;
+        top: calc(50% - 20px);
+        left: 50%;
+        font-size: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        transform: translateX(-50%);
+        transition: top 0.5s;
+        z-index: 1; }
+      section.content #gallery figure::after {
+        content: attr(data-desc);
+        width: 100%;
+        position: absolute;
+        top: calc(50% + 5px);
+        left: 50%;
+        text-align: center;
+        transform: translateX(-50%);
+        transition: top 0.5s; }
 
 /* TABLET */
 @media only screen and (min-width: 600px) {
+  section.content .galleryWrap {
+    overflow: hidden;
+    position: relative;
+    display: block; }
+    section.content .galleryWrap::before {
+      display: none; }
+    section.content .galleryWrap .arrow {
+      display: none; }
   section.content #gallery {
     flex-direction: row; }
     section.content #gallery figure {
       width: 31%;
-      margin-top: 2vmin; } }
+      margin-top: 2vmin;
+      position: relative; }
+      section.content #gallery figure.hiding {
+        position: relative;
+        opacity: 1;
+        z-index: 1; } }
 
 /* LAPTOP */
 @media only screen and (min-width: 992px) {
@@ -347,37 +401,22 @@ section.content {
         bottom: 0;
         background: #F4F4F4;
         display: block; }
-    section.content #gallery figure figcaption {
-      display: none; }
+    section.content #gallery figure .imageWrap {
+      background-color: transparent; }
+    section.content #gallery figure img {
+      opacity: 1; }
     section.content #gallery figure:hover .imageWrap {
       background-color: #077ba3; }
     section.content #gallery figure:hover img {
       opacity: 0.6; }
     section.content #gallery figure::before {
       content: attr(data-head);
-      width: 100%;
-      position: absolute;
-      top: 150%;
-      left: 50%;
-      color: white;
-      font-size: 16px;
-      text-align: center;
-      text-transform: uppercase;
-      transform: translateX(-50%);
-      transition: top 0.5s;
-      z-index: 1; }
+      top: 150%; }
     section.content #gallery figure:hover::before {
       top: calc(50% - 20px); }
     section.content #gallery figure::after {
       content: attr(data-desc);
-      width: 100%;
-      position: absolute;
-      top: 175%;
-      left: 50%;
-      color: white;
-      text-align: center;
-      transform: translateX(-50%);
-      transition: top 0.5s; }
+      top: 175%; }
     section.content #gallery figure:hover::after {
       top: calc(50% + 5px); } }
 

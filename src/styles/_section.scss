@@ -9,40 +9,73 @@ section.content {
         position: relative;
     }
 
+    .galleryWrap {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+
+        &::before {
+            content: '';
+            padding-top: 67%;
+        }
+
+        .arrow {
+            width: 0px;
+            height: 0px;
+            border: 15px solid transparent;
+            position: absolute;
+            top: calc(50% - 7.5px);
+            z-index: 10;
+
+            &.arrow-left {
+                border-color: transparent $primary-highlight transparent transparent;
+                left: 0;
+            }
+
+            &.arrow-right {
+                border-color: transparent transparent transparent $primary-highlight;
+                right: 0;
+            }
+
+            &:hover {
+                opacity: 0.66;
+            }
+
+        }
+    }
+
     #gallery {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
         figure {
             width: 100%;
-            margin-top: 25px;
             border: 1px solid $primary-highlight;
+            position: absolute;
+            flex-shrink: 0;
+            color: $default-back;
             overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.5s;
             cursor: pointer;
-            position: relative;
+            z-index: 1;
+
+            &.hiding {
+                position: absolute;
+                opacity: 0;  
+                z-index: -1;       
+            }
 
             .imageWrap {
-                background-color: transparent;
+                background-color: rgb(7,123,163);
                 @include aspect-ratio(4, 2.6666);
             }
 
             img { 
                 width: 105%; 
-                opacity: 1;
-            }
-
-            figcaption { 
-                width: 100%;
-                padding: 0 10px;
-                position: absolute;
-                bottom: 0;
-                background: $secondary-highlight;
-                font-size: 10px;
-                text-align: center;
-                opacity: 0.8;
-                z-index: 1;
+                opacity: 0.6;
             }
 
             &#man {
@@ -62,6 +95,31 @@ section.content {
                     transform: translate(-52%, -44%);
                 }
             }
+    
+            &::before {
+                content: attr(data-head);
+                width: 100%;
+                position: absolute;
+                top: calc(50% - 20px);
+                left: 50%;
+                font-size: 16px;
+                text-align: center;
+                text-transform: uppercase;
+                transform: translateX(-50%);
+                transition: top 0.5s;
+                z-index: 1;
+            }
+
+            &::after {
+                content: attr(data-desc);
+                width: 100%;
+                position: absolute;top: calc(50% + 5px);
+                left: 50%;
+                text-align: center;
+                transform: translateX(-50%);
+                transition: top 0.5s;
+            }
+
         }
     }
 
@@ -72,12 +130,29 @@ section.content {
 
     section.content { 
 
+        .galleryWrap {
+            overflow: hidden;
+            position: relative;
+            display: block;
+    
+            &::before { display: none; }
+
+            .arrow { display: none; }
+        }
+
         #gallery {
             flex-direction: row;
-
+            
             figure {
                 width: 31%;
                 margin-top: 2vmin;
+                position: relative;
+    
+                &.hiding {
+                    position: relative;
+                    opacity: 1;  
+                    z-index: 1;       
+                }
             }
 
         }
@@ -113,7 +188,9 @@ section.content {
 
             figure {
 
-                figcaption { display: none; }
+                .imageWrap { background-color: transparent; }
+
+                img { opacity: 1; }
 
                 &:hover {
     
@@ -124,31 +201,14 @@ section.content {
     
                 &::before {
                     content: attr(data-head);
-                    width: 100%;
-                    position: absolute;
                     top: 150%;
-                    left: 50%;
-                    color: white;
-                    font-size: 16px;
-                    text-align: center;
-                    text-transform: uppercase;
-                    transform: translateX(-50%);
-                    transition: top 0.5s;
-                    z-index: 1;
                 }
     
                 &:hover::before { top: calc(50% - 20px); }
     
                 &::after {
                     content: attr(data-desc);
-                    width: 100%;
-                    position: absolute;
                     top: 175%;
-                    left: 50%;
-                    color: white;
-                    text-align: center;
-                    transform: translateX(-50%);
-                    transition: top 0.5s;
                 }
     
                 &:hover::after { top: calc(50% + 5px); }
